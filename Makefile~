@@ -1,0 +1,35 @@
+PROGRAM_HOME=..
+
+
+#
+# Change this to wherever you want to install the program.
+#
+INSTALL_DIR=$(PROGRAM_HOME)/install
+
+
+SOURCE_DIR=$(PROGRAM_HOME)/development/src
+WINDOW_DIR=$(PROGRAM_HOME)/development/src/scrwindow
+UTIL_DIR=$(PROGRAM_HOME)/development/src/util
+AUX_DIR=$(PROGRAM_HOME)/development/aux_files
+
+
+LIBS=
+
+#
+# These are some things about the compiler
+#
+CC=gcc -c -std=c99
+LN=gcc
+
+CFLAGS= -I$(SOURCE_DIR)  -I$(WINDOW_DIR) -I$(UTIL_DIR) -DIS_WINDOWS
+
+OBJFILES=epsman.o rectangles.o intrf.o lineread.o qrnd.o
+
+LFLAGS=
+
+#
+# Object files
+#
+rectangles.o:	$(WINDOW_DIR)/rectangles.c  $(WINDOW_DIR)/rectangles.h 
+	$(CC) $(CFLAGS) $(WINDOW_DIR)/rectangles.c
+
